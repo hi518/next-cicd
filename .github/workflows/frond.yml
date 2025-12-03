@@ -1,9 +1,18 @@
+name: 打包next项目
 on: push
 
 jobs: 
-  job1:
+  npm-build:
+    name: npm-build构建
     runs-on: ubuntu-latest
     steps:
-      - run: pwd
-      - run: ls
-      - run: node -v
+      - name: 读取仓库内容😊
+        uses: actions/checkout@v4
+
+      - name: 安装依赖
+        run: npm install
+
+      - name: 项目打包
+        run: npm run build
+
+      
